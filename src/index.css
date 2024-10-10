@@ -1,3 +1,12 @@
-html{
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+html {
   background-color: #1e1d1d;
+}
+
+.nav-logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1f83be;
 }

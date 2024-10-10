@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <div>
             <header className="hero text-center py-5">
@@ -9,12 +10,17 @@ const HomePage = () => {
                     <p className="lead">
                         Manage your finances effectively with our Expense Tracking App.
                     </p>
-                    <a href="#features" className="btn btn-primary btn-lg mx-2 my-2">
+                    <Link to="/features" className="btn btn-primary btn-lg mx-2 my-2">
                         Explore Features
-                    </a>
-                    <a href="#signup" className="btn btn-success btn-lg mx-2 my-2">
-                        Create an Account
-                    </a>
+                    </Link>
+                    {
+                        !props.isLogin && (
+                            <Link to="/createnew" className="btn btn-success btn-lg mx-2 my-2">
+                                Create an Account
+                            </Link>
+                        )
+                    }
+
                 </div>
             </header>
             <section id="features" className="py-5 bg-white">

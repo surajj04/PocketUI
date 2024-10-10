@@ -182,14 +182,14 @@ const ProfilePage = () => {
                                                             <td>
                                                                 <button 
                                                                     type="button" 
-                                                                    className="btn btn-warning btn-sm me-2" 
+                                                                    className="btn btn-warning btn-sm me-2 my-2" 
                                                                     onClick={() => handleEditClick(i)} 
                                                                     data-bs-toggle="modal" 
                                                                     data-bs-target="#editExpenseModal"
                                                                 >
                                                                     Edit
                                                                 </button>
-                                                                <button className="btn btn-danger btn-sm">Delete</button>
+                                                                <button className="btn btn-danger btn-sm my-2">Delete</button>
                                                             </td>
                                                         </tr>
                                                     )

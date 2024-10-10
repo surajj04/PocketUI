@@ -5,8 +5,8 @@ const Navbar = (props) => {
     return (
         <nav className="navbar navbar-expand-lg bg-dark sticky-top py-3" data-bs-theme="dark">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
-                    Pocket
+                <NavLink className="navbar-brand " to="/">
+                    <img src="/nav-logo.png" alt="Pocket-Logo"  width={70}/>&ensp;<span className='nav-logo fs-3'>Pocket</span>
                 </NavLink>
                 <button
                     className="navbar-toggler"
@@ -40,6 +40,14 @@ const Navbar = (props) => {
                         <li className="nav-item mx-3">
                             <NavLink
                                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                                to="/features"
+                            >
+                                Features
+                            </NavLink>
+                        </li>
+                        <li className="nav-item mx-3">
+                            <NavLink
+                                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                                 to="/contact"
                             >
                                 Contact
@@ -49,11 +57,11 @@ const Navbar = (props) => {
                     <div className="d-flex flex-wrap">
                         {!props.isLogin ? (
                             <>
-                                <button className="btn btn-success mx-2">
-                                    <NavLink className="nav-link text-white" to="/login">
+                                <NavLink className="nav-link text-white" to="/login">
+                                    <button className="btn btn-success mx-2">
                                         <i className="fa-solid fa-circle-user my-auto"></i>&ensp;Login
-                                    </NavLink>
-                                </button>
+                                    </button>
+                                </NavLink>
                                 <button className="btn btn-success mx-2">
                                     <NavLink className="nav-link text-white" to="/createnew">
                                         <i className="fa-solid fa-user-plus"></i>&ensp;Create Account
@@ -61,11 +69,11 @@ const Navbar = (props) => {
                                 </button>
                             </>
                         ) : (
-                            <button className="btn btn-light mx-2">
-                                <NavLink className="nav-link" to="/profile">
+                            <NavLink className="nav-link" to="/profile">
+                                <button className="btn btn-light mx-2">
                                     <i className="fa-solid fa-user"></i>&ensp;Profile
-                                </NavLink>
-                            </button>
+                                </button>
+                            </NavLink>
                         )}
 
 
