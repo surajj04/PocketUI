@@ -5,6 +5,9 @@ import ExpenseData from '../ExpenseData';
 
 const ProfilePage = () => {
     const [expenses, setExpenses] = useState(ExpenseData);
+
+    const [monthlyTotal, setMonthlyTotal] = useState(10000);
+
     const [expenseForm, setExpenseForm] = useState({
         amount: '',
         category: '',
@@ -83,7 +86,10 @@ const ProfilePage = () => {
             </header>
             <section className="">
                 <div className="container">
-                    <h2 className="text-center my-5">Welcome, [Username]</h2>
+                    <h2 className="text-center my-3">Welcome, [Username]</h2>
+                    <div className="text-center mb-4">
+                        <h4>Total Monthly Expenses: ₹{monthlyTotal}</h4>
+                    </div>
                     <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                         <li className="nav-item" role="presentation">
                             <a className="nav-link active" id="expense-tab" data-bs-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="true">Expense Tracking</a>
@@ -99,7 +105,8 @@ const ProfilePage = () => {
                     <div className="tab-content mt-3" id="myTabContent">
                         {/* Expense Tracking Tab */}
                         <div className="tab-pane fade show active" id="expense" role="tabpanel" aria-labelledby="expense-tab">
-                            <h3 className="text-center">Expense Tracking</h3>
+                            <h3 className="text-center">Welcome to Pocket! Track Your Expenses</h3>
+
                             <div className="mb-4">
                                 <h4>Add Expense</h4>
                                 <form onSubmit={handleSubmit}>
@@ -157,6 +164,7 @@ const ProfilePage = () => {
                                     <button type="submit" className="btn btn-success w-100">Add Expense</button>
                                 </form>
                             </div>
+
                             <div>
                                 <h4>View Expenses</h4>
                                 <div className="table-responsive">
@@ -171,36 +179,31 @@ const ProfilePage = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {
-                                                expenses.map((exp, i) => {
-                                                    return (
-                                                        <tr key={i}>
-                                                            <td>{exp.date}</td>
-                                                            <td>{exp.category}</td>
-                                                            <td>{exp.description}</td>
-                                                            <td>${exp.amount}</td>
-                                                            <td>
-                                                                <button 
-                                                                    type="button" 
-                                                                    className="btn btn-warning btn-sm me-2 my-2" 
-                                                                    onClick={() => handleEditClick(i)} 
-                                                                    data-bs-toggle="modal" 
-                                                                    data-bs-target="#editExpenseModal"
-                                                                >
-                                                                    Edit
-                                                                </button>
-                                                                <button className="btn btn-danger btn-sm my-2">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            }
+                                            {expenses.map((exp, i) => (
+                                                <tr key={i}>
+                                                    <td>{exp.date}</td>
+                                                    <td>{exp.category}</td>
+                                                    <td>{exp.description}</td>
+                                                    <td>₹{exp.amount}</td>
+                                                    <td>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-warning btn-sm me-2 my-2"
+                                                            onClick={() => handleEditClick(i)}
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#editExpenseModal"
+                                                        >
+                                                            Edit
+                                                        </button>
+                                                        <button className="btn btn-danger btn-sm my-2">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            ))}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
                         {/* Budget Management Tab */}
                         <div className="tab-pane fade" id="budget" role="tabpanel" aria-labelledby="budget-tab">
                             <h3 className="text-center">Budget Management</h3>
